@@ -6,7 +6,7 @@
  (maintainers    "Justin Ethier <justin.ethier at gmail dot com>")
  (description    "Array list data structure")
  (tags           "math" "data-structures")
- (docs           "https://github.com/cyclone-scheme/cyclone-winds/wiki/array-list.md")
+ (docs           "https://github.com/cyclone-scheme/cyclone-winds/wiki/array-list")
 
  (library
    (name (cyclone array-list))
