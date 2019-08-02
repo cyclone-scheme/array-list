@@ -7,7 +7,8 @@
  (description    "Array list data structure")
  (tags           "math" "data-structures")
  (docs           "https://github.com/cyclone-scheme/cyclone-winds/wiki/array-list")
+ (test           "array-list-tests.scm")
 
  (library
-   (name (cyclone array-list))
+     (name (cyclone array-list))
    (description "array-list library")))
