@@ -33,5 +33,5 @@ jobs:
     - name: Run tests
       run: |
         cyclone array-list-tests.scm
-        ./array-list-tests.scm
+        ./array-list-tests
 
