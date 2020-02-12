@@ -12,7 +12,6 @@ jobs:
 
     steps:
     # Install dependencies
-    # TODO: cache these
     - name: Install ck
       run: sudo apt-get install libck-dev    
     - name: Check out cyclone
@@ -21,6 +20,18 @@ jobs:
         repository: justinethier/cyclone-bootstrap
     - name: make
       run: make
+    - name: Cache compiled Cyclone files
+      uses: actions/cache@v1
+      env:
+        cache-name: cache-cyclone
+      with:
+        path: ~/cyclone-bootstrap
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/cyclone') }}
+        #key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}:  
+        #restore-keys: |
+        #  ${{ runner.os }}-build-${{ env.cache-name }}-
+        #  ${{ runner.os }}-build-
+        #  ${{ runner.os }}-          
     - name: make install
       run: sudo make install
     - name: make test
