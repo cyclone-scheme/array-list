@@ -1,0 +1,37 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:    
+      matrix:
+        arch: [64] #, 32
+
+    steps:
+    # Install dependencies
+    # TODO: cache these
+    - name: Install ck
+      run: sudo apt-get install libck-dev    
+    - name: Check out cyclone
+      uses: actions/checkout@master
+      with:
+        repository: justinethier/cyclone-bootstrap
+    - name: make
+      run: make
+    - name: make install
+      run: sudo make install
+    - name: make test
+      run: make test
+      
+    # Build and test our library
+    - uses: actions/checkout@v2
+    - name: Build array-list
+      run: cyclone cyclone/array-list.sld
+    - name: Run tests
+      run: |
+        cyclone array-list-tests.scm
+        ./array-list-tests.scm
+
