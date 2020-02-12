@@ -26,7 +26,7 @@ jobs:
         cache-name: cache-cyclone
       with:
         path: ~/cyclone-bootstrap
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/cyclone') }}
+        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('~/cyclone-bootstrap/cyclone') }}
         #key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}:  
         #restore-keys: |
         #  ${{ runner.os }}-build-${{ env.cache-name }}-
