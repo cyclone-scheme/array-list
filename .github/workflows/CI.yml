@@ -15,7 +15,10 @@ jobs:
     - name: Install ck
       run: sudo apt-get install libck-dev    
     - name: Install Cyclone
-      run: wget https://github.com/cyclone-scheme/binary-releases/raw/master/0.14/cyclone-scheme_0.14_amd64.deb && sudo apt install ./cyclone-scheme_0.14_amd64.deb
+      run: |
+        wget https://github.com/cyclone-scheme/binary-releases/raw/master/ubuntu-18.04-lts/cyclone-scheme_0.15_amd64.deb 
+        sudo apt install ./cyclone-scheme_0.15_amd64.deb
+        
     #- name: Check out cyclone
     #  uses: actions/checkout@master
     #  with:
