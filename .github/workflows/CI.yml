@@ -14,29 +14,31 @@ jobs:
     # Install dependencies
     - name: Install ck
       run: sudo apt-get install libck-dev    
-    - name: Check out cyclone
-      uses: actions/checkout@master
-      with:
-        repository: justinethier/cyclone-bootstrap
-    - name: Cache compiled Cyclone files
-      uses: actions/cache@v1
-      env:
-        cache-name: cache-cyclone
-      with:
-        path: cyclone-bootstrap
-        key: ${{ runner.os }}-build-${{ env.cache-name }}
-        #key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}:  
-        #restore-keys: |
-        #  ${{ runner.os }}-build-${{ env.cache-name }}-
-        #  ${{ runner.os }}-build-
-        #  ${{ runner.os }}-          
-    - name: make
-      if: steps.cache-cyclone.cache-hit != 'true'
-      run: make
-    - name: make install
-      run: sudo make install
-    - name: make test
-      run: make test
+    - name: Install Cyclone
+      run: wget https://github.com/cyclone-scheme/binary-releases/raw/master/0.14/cyclone-scheme_0.14_amd64.deb && sudo apt install ./cyclone-scheme_0.14_amd64.deb
+    #- name: Check out cyclone
+    #  uses: actions/checkout@master
+    #  with:
+    #    repository: justinethier/cyclone-bootstrap
+    #- name: Cache compiled Cyclone files
+    #  uses: actions/cache@v1
+    #  env:
+    #    cache-name: cache-cyclone
+    #  with:
+    #    path: cyclone-bootstrap
+    #    key: ${{ runner.os }}-build-${{ env.cache-name }}
+    #    #key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}:  
+    #    #restore-keys: |
+    #    #  ${{ runner.os }}-build-${{ env.cache-name }}-
+    #    #  ${{ runner.os }}-build-
+    #    #  ${{ runner.os }}-          
+    #- name: make
+    #  if: steps.cache-cyclone.cache-hit != 'true'
+    #  run: make
+    #- name: make install
+    #  run: sudo make install
+    #- name: make test
+    #  run: make test
       
     # Build and test our library
     - uses: actions/checkout@v2
