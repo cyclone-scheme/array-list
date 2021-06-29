@@ -1,6 +1,6 @@
 (package
  (name           array-list)
- (version        0.1)
+ (version        "0.1.1")
  (license        "MIT")
  (authors        "Koz Ross")
  (maintainers    "Justin Ethier <justin.ethier at gmail dot com>")
